@@ -50,7 +50,7 @@ ENV VITE_DISPATCH_COMMIT_MESSAGE="Unknown"
 COPY . /usr/src/dispatch/
 RUN YARN_CACHE_FOLDER="$(mktemp -d)" \
   && export YARN_CACHE_FOLDER \
-  && pushd /usr/src/ \
+  && pushd /usr/src/dispatch \
   && python setup.py bdist_wheel \
   && rm -r "$YARN_CACHE_FOLDER" \
   && mv /usr/src/dispatch/dist /dist
