@@ -47,13 +47,13 @@ ENV VITE_DISPATCH_COMMIT_HASH="Unknown"
 ARG VITE_DISPATCH_COMMIT_MESSAGE
 ENV VITE_DISPATCH_COMMIT_MESSAGE="Unknown"
 
-COPY . /usr/src/
+COPY . /usr/src/dispatch/
 RUN YARN_CACHE_FOLDER="$(mktemp -d)" \
   && export YARN_CACHE_FOLDER \
-  && pushd /usr/src \
+  && pushd /usr/src/ \
   && python setup.py bdist_wheel \
   && rm -r "$YARN_CACHE_FOLDER" \
-  && mv /usr/src/dist /dist
+  && mv /usr/src/dispatch/dist /dist
 
 # This is the image to be run
 FROM python:3.11.10-slim-bullseye
